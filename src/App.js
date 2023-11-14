@@ -23,9 +23,10 @@ function App() {
 
   const removeTodo = (id) => {
     const index = todoList.findIndex(obj => obj.id === id);
+    const newTodoList = todoList.filter((todo) => todo.id !== id)
+    setTodoList(newTodoList)
     console.log("Removing item with id: " + id + " at index: " + index);
-    todoList.splice(index, 1);
-    setTodoList(todoList);
+        
   }
   
   return (
