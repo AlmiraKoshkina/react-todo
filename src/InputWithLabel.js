@@ -10,7 +10,7 @@ const InputWithLabel = (props) => {
     return (
         <>
             <label htmlFor='todoTitle'>{props.children}</label>
-            <input autoFocus id="todoTitle" name="title" value={props.todoTitle} onChange={props.handleTitleChange} ref={inputRef}></input>
+            <input id={props.id} name= {props.name} value={props.todoTitle} onChange={props.handleTitleChange} ref={inputRef}></input>
         </>
         
     )

@@ -14,14 +14,14 @@ let AddTodoForm = ({ onAddTodo }) => {
         
         console.log(`${todoTitle}`);
         setTodoTitle("");
-        event.target.elements.title.value = "";
+        event.target.elements.todos.value = "";
         const newTodoObj = { id: Date.now(), title: todoTitle };
         onAddTodo(newTodoObj);
     }
     
     return (
         <form onSubmit={handleAddTodo}>
-            <InputWithLabel  todoTitle={todoTitle} handleTitleChange={handleTitleChange}>Title: </InputWithLabel>
+            <InputWithLabel id="1" name = "todos" todoTitle={todoTitle} handleTitleChange={handleTitleChange}>Title: </InputWithLabel>
             <button>Add</button>
         </form>
     );
