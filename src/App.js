@@ -15,18 +15,26 @@ const useSemiPersistentState = () => {
 
 function App() {
   const [todoList, setTodoList] = useSemiPersistentState();
+  
   const addTodo = (newTodo) => {
     const todos = [...todoList, newTodo];
     setTodoList(todos);
   }
-  
+
+  const removeTodo = (id) => {
+    const index = todoList.findIndex(obj => obj.id === id);
+    const newTodoList = todoList.filter((todo) => todo.id !== id)
+    setTodoList(newTodoList)
+    console.log("Removing item with id: " + id + " at index: " + index);
+        
+  }
   
   return (
     <>
       <h1>Todo List</h1>
       
       <AddTodoForm onAddTodo={addTodo} />
-      <TodoList todoList={todoList} />
+      <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
       
     </>
   );
