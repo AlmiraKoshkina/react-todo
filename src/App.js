@@ -7,7 +7,27 @@ import AddTodoForm from './AddTodoForm';
 function App() {
   
   
-  const [todoList, setTodoList] = React.useState(JSON.parse(localStorage.getItem("savedTodoList")) || [])
+  const [todoList, setTodoList] = React.useState([])
+
+  React.useEffect(() => {
+    const myPromise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const result = {
+          data: { todoList: JSON.parse(localStorage.getItem("savedTodoList") || []) }
+        };
+
+        resolve(result);
+      }, 2000);
+              
+    }, [])
+    
+    myPromise
+      .then(result => {
+        setTodoList(result.data.todoList);
+      })
+  }); 
+  
+  
   React.useEffect(() => {
       console.log('todoList has changed:', todoList);
       localStorage.setItem("savedTodoList", JSON.stringify(todoList));
