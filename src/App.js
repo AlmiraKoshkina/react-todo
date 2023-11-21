@@ -9,6 +9,9 @@ function App() {
   
   const [todoList, setTodoList] = React.useState([])
 
+  const [isLoading, setIsLoading] = React.useState(true);
+
+
   React.useEffect(() => {
     const myPromise = new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -24,14 +27,27 @@ function App() {
     myPromise
       .then(result => {
         setTodoList(result.data.todoList);
+        setIsLoading(false);
       })
+      .catch(error => {
+        console.error(error);
+        
+      });
+    
   }); 
   
   
   React.useEffect(() => {
       console.log('todoList has changed:', todoList);
-      localStorage.setItem("savedTodoList", JSON.stringify(todoList));
-    }, [todoList]);
+    
+    
+    if (!isLoading) {
+     
+      localStorage.setItem('savedTodoList', JSON.stringify(todoList));
+    }
+  }, [todoList, isLoading]);
+
+ 
 
   const addTodo = (newTodo) => {
     const todos = [...todoList, newTodo];
