@@ -22,7 +22,7 @@ function App() {
         resolve(result);
       }, 2000);
               
-    }, [])
+    })
     
     myPromise
       .then(result => {
@@ -69,7 +69,8 @@ function App() {
       
       <AddTodoForm onAddTodo={addTodo} />
       {isLoading ? <p>Loading...</p> : <p><TodoList todoList={todoList} onRemoveTodo={removeTodo} /></p>}
-          
+
+     
     </>
 
   );
