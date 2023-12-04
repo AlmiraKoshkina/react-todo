@@ -21,7 +21,6 @@ function App() {
 
         resolve(result);
       }, 2000);
-              
     })
     
     myPromise
@@ -34,7 +33,7 @@ function App() {
         
       });
     
-  }); 
+  }, []); 
   
   
   React.useEffect(() => {
@@ -68,7 +67,7 @@ function App() {
       <h1>Todo List</h1>
       
       <AddTodoForm onAddTodo={addTodo} />
-      {isLoading ? <p>Loading...</p> : <p><TodoList todoList={todoList} onRemoveTodo={removeTodo} /></p>}
+      {isLoading ? <p>Loading...</p> : <div><TodoList todoList={todoList} onRemoveTodo={removeTodo} /></div>}
 
      
     </>
