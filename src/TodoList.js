@@ -6,7 +6,7 @@ let TodoList = ({ todoList, onRemoveTodo }) => {
     return (
         <ul>
             {todoList.map(function (item) {
-                return (<TodoListItem onRemoveTodo={onRemoveTodo} key={item} todo={item} />);
+                return (<TodoListItem onRemoveTodo={onRemoveTodo} key={item.id} todo={item} />);
             })}
         </ul>
 )    
