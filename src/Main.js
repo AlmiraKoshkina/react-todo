@@ -65,14 +65,9 @@ function Main() {
         }
     }, [todoList, isLoading]);
 
-
-
-    // const addTodo = (newTodo) => {
-    //     const todos = [...todoList, newTodo];
-    //     setTodoList(todos);
-    // }
-
+       
     const postTodo = async (todo) => {
+        const newTodoList = [...todoList, todo];
         try {
             const airtableData = {
                 fields: {
@@ -98,19 +93,47 @@ function Main() {
                 throw new Error(message);
             }
 
-            const dataResponse = await response.json();
-            return dataResponse;
+            setTodoList(newTodoList);
+            console.log("Adding item " + todo.title);
+
+
         } catch (error) {
             console.log(error.message);
             return null;
         }
     };
 
-    const removeTodo = (id) => {
+    const removeTodo = async (id) => {
         const index = todoList.findIndex(obj => obj.id === id);
         const newTodoList = todoList.filter((todo) => todo.id !== id)
-        setTodoList(newTodoList)
-        console.log("Removing item with id: " + id + " at index: " + index);
+        try {
+        
+            const response = await fetch(
+                `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/${id}`,
+                {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_TOKEN}`,
+                    }
+                    
+                }
+            );
+
+            if (!response.ok) {
+                const message = `Error has ocurred:
+                                ${response.status}`;
+                throw new Error(message);
+            }
+
+            setTodoList(newTodoList)
+            console.log("Removing item with id: " + id + " at index: " + index);
+       
+    } catch (error) {
+        console.log(error.message);
+        return null;
+    }
+
     }
 
     return (
