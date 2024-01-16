@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
+import style from './TodoListItem.module.css';
 
 function Main() {
 
@@ -137,15 +138,15 @@ function Main() {
     }
 
     return (
-        <>
+        <div className= {style.body}>
 
-            <h1>Todo List</h1>
+            <h1 className={style.header}>Todo List</h1>
 
             <AddTodoForm onAddTodo={postTodo} />
             {isLoading ? <p>Loading...</p> : <div><TodoList todoList={todoList} onRemoveTodo={removeTodo} /></div>}
 
 
-        </>
+        </div>
 
     );
 }

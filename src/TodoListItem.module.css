@@ -1,3 +1,56 @@
 .ListItem {
-    color: blue;
+    color: red;
 }
+
+.body {
+    color: green;
+    background-color: beige;
+    font-family: 'Roboto Mono', monospace;
+    padding: 10px;
+    margin: 10px;
+}
+
+.header {
+    font-size: 70px;
+    font-weight: 300;
+    color:black;
+}
+
+.input {
+    border: 10px solid violet;
+    
+}
+
+button {
+    color: rgb(7, 179, 179);
+    font-weight: 30px;
+
+}
+
+@media (max-width: 768px) {
+    .header {
+            font-size: 20px;
+            font-weight: 20;
+           
+        }
+}
+
+@media (min-width: 769px) {
+    ul {
+            list-style-type: none;
+            padding: 0;
+        }
+    
+        li {
+            background-image: url('../img/OIP.jpg');
+            background-repeat: no-repeat;
+            background-position: 0 50%;
+            padding-left: 30px;
+           
+            background-size: 30px 30px;
+            margin-bottom: 5px;
+            
+        }
+}
+
+    
