@@ -1,10 +1,11 @@
 .ListItem {
-    color: red;
+    color: #b11111;
+    font-weight: bold;
 }
 
 .body {
     color: green;
-    background-color: beige;
+    background-color: #f7f7eb;
     font-family: 'Roboto Mono', monospace;
     padding: 10px;
     margin: 10px;
@@ -17,12 +18,13 @@
 }
 
 .input {
-    border: 10px solid violet;
+    border: 5px solid green;
+    
     
 }
 
 button {
-    color: rgb(7, 179, 179);
+    color: #07b3b3;
     font-weight: 30px;
 
 }
