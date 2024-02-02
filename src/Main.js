@@ -67,8 +67,7 @@ function Main() {
     }, [todoList, isLoading]);
 
        
-    const postTodo = async (todo) => {
-        const newTodoList = [...todoList, todo];
+    const postTodo = async (todo) => {        
         try {
             const airtableData = {
                 fields: {
@@ -93,7 +92,14 @@ function Main() {
                              ${response.status}`;
                 throw new Error(message);
             }
+            const data = await response.json();
+            console.log(data);
+            const newTodo = {
+                id: data.id,
+                title: data.fields.title
+            }
 
+            const newTodoList = [...todoList, newTodo];
             setTodoList(newTodoList);
             console.log("Adding item " + todo.title);
 
