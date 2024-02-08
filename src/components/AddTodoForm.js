@@ -22,7 +22,7 @@ let AddTodoForm = ({ onAddTodo }) => {
     
     return (
         <form onSubmit={handleAddTodo}>
-            <InputWithLabel id="1" name = "todos" todoTitle={todoTitle} handleTitleChange={handleTitleChange}>Title: </InputWithLabel>
+            <InputWithLabel id={1} name = "todos" todoTitle={todoTitle} handleTitleChange={handleTitleChange}>Title: </InputWithLabel>
             <button>Add</button>
         </form>
     );

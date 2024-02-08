@@ -13,7 +13,7 @@ let TodoList = ({ todoList, onRemoveTodo }) => {
 };
 
 TodoList.propTypes = {
-    todoList: PropTypes.func.isRequired,
+    todoList: PropTypes.array.isRequired,
     onRemoveTodo: PropTypes.func.isRequired 
 };
 
