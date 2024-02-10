@@ -1,7 +1,7 @@
 import React from 'react';
-import TodoList from './TodoList';
-import AddTodoForm from './AddTodoForm';
-import style from './TodoListItem.module.css';
+import TodoList from './components/TodoList';
+import AddTodoForm from './components/AddTodoForm';
+import style from './components/TodoListItem.module.css';
 
 function Main() {
 
