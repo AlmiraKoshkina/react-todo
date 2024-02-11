@@ -12,7 +12,7 @@ function Main() {
 
 
     const fetchData = async () => {
-        const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`
+        const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}?view=Grid%20view`
         const options = {
             method: "GET",
             headers: {
@@ -31,6 +31,9 @@ function Main() {
             }
 
             const data = await response.json();
+
+
+            
             console.log(data);
             const todos = data.records.map((todo) => {
 
