@@ -10,6 +10,13 @@ function Main() {
 
     const [isLoading, setIsLoading] = React.useState(true);
 
+    const [sortOrder, setSortOrder] = React.useState("asc");
+
+    const toggleSortOrder = () => {
+        setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+        console.log(sortOrder);
+    };
+
 
     const fetchData = async () => {
         const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}?view=Grid%20view&sort[0][field]=title&sort[0][direction]=asc`
@@ -45,16 +52,28 @@ function Main() {
                 //     return 0;
                 // });
 
-                if (titleA < titleB) {
-                    return 1;
+            //     if (titleA < titleB) {
+            //         return 1;
+            //     }
+            //     if (titleA > titleB) {
+            //         return -1;
+            //     }
+            //     return 0;
+            // });
+
+                if (sortOrder === "asc") {
+                    return titleA < titleB ? -1 : titleA > titleB ? 1 : 0;
+                } else {
+                    return titleA < titleB ? 1 : titleA > titleB ? -1 : 0;
                 }
-                if (titleA > titleB) {
-                    return -1;
-                }
-                return 0;
             });
 
-
+            setTodoList(sortedData.map(todo => ({
+                id: todo.id,
+                title: todo.fields.title
+            })));
+            setIsLoading(false);
+        
 
             
             console.log(data);
@@ -79,7 +98,7 @@ function Main() {
 
     React.useEffect(() => {
         fetchData()
-    }, []);
+    }, [sortOrder]);
 
 
     React.useEffect(() => {
@@ -173,6 +192,10 @@ function Main() {
         <div className= {style.body}>
 
             <h1 className={style.header}>Todo List</h1>
+
+            <button onClick={toggleSortOrder}> 
+                Sort {sortOrder === "asc" ? "Descending" : "Ascending"}
+            </button>
 
             <AddTodoForm onAddTodo={postTodo} />
             {isLoading ? <p>Loading...</p> : <div><TodoList todoList={todoList} onRemoveTodo={removeTodo} /></div>}
