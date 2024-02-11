@@ -32,6 +32,18 @@ function Main() {
 
             const data = await response.json();
 
+            const sortedData = data.records.sort((objectA, objectB) => {
+                const titleA = objectA.fields.title.toUpperCase();
+                const titleB = objectB.fields.title.toUpperCase();
+
+                if (titleA < titleB) {
+                    return -1;
+                }
+                if (titleA > titleB) {
+                    return 1;
+                }
+                return 0;
+            });
 
             
             console.log(data);
