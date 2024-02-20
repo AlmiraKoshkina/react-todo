@@ -1,8 +1,8 @@
 import React from 'react';
-import Main from './Main';
+import TodoContainer from './components/TodoContainer';
 import NewTodoList from './NewTodoList';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-// import TodoContainer.js from './TodoContainer.js';
+
 
 function App() {
   
@@ -10,7 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main/>} />
+        <Route path="/" element={<TodoContainer/>} />
         <Route path="/new" element={<NewTodoList/>} /> 
            
       </Routes>

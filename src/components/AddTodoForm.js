@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 
 let AddTodoForm = ({ onAddTodo }) => {
-    const [todoTitle, setTodoTitle] = React.useState([]);
+    const [todoTitle, setTodoTitle] = React.useState("");
     
     const handleTitleChange = (event) => {
         const newTodoTitle = event.target.value;
@@ -22,7 +22,7 @@ let AddTodoForm = ({ onAddTodo }) => {
     
     return (
         <form onSubmit={handleAddTodo}>
-            <InputWithLabel id={1} name = "todos" todoTitle={todoTitle} handleTitleChange={handleTitleChange}>Title: </InputWithLabel>
+            <InputWithLabel id={1} name="todos" todoTitle={todoTitle} handleTitleChange={handleTitleChange}>Title: </InputWithLabel>
             <button>Add</button>
         </form>
     );
